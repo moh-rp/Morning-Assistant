@@ -21,7 +21,12 @@ def get_weather(lat, long):
 
     time_index = weather['hourly']['time'].index(f'{date}T{current_hour}')
 
-    current_temp = (weather['hourly']['temperature_2m'][current_temp])
+    current_temp = (weather['hourly']['temperature_2m'][time_index])
     return current_temp
+
+def get_current_temp():
+    lat, long = get_coords()
+    return get_weather(lat, long)
+
 
 
