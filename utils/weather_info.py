@@ -2,7 +2,7 @@ import requests
 from datetime import datetime
 
 
-def get_city():
+def get_coords():
     ip = requests.get("https://ipinfo.io/json")
     location_json = ip.json()
     coords = location_json['loc'].split(',')
@@ -19,13 +19,9 @@ def get_weather(lat, long):
     date = now.date()
     current_hour = now.strftime("%H:00")
 
-    morning_index = weather['hourly']['time'].index(f'{date}T{current_hour}')
-    noon_index = weather['hourly']['time'].index(f'{date}T{current_hour}')
-    evening_index = weather['hourly']['time'].index(f'{date}T{current_hour}')
+    time_index = weather['hourly']['time'].index(f'{date}T{current_hour}')
 
-    print(weather['hourly']['temperature_2m'][morning_index])
+    current_temp = (weather['hourly']['temperature_2m'][current_temp])
+    return current_temp
 
-    #print(weather)
 
-lat,long=get_city()
-get_weather(lat,long)
